@@ -9,6 +9,7 @@
  * Execução:   mpiexec -n 3 ./rvet
  */
  
+// 
 #include <stdio.h>
 #include <string.h>  
 #include <mpi.h>     
@@ -43,7 +44,7 @@ void Recebe(int pid, int source, Relogio*clock) {
    
    int size, i;
    
-   Relogio clock_received;
+   Relogio clock_recebe;
    
    MPI_Recv(&clock_recebe, sizeof(Relogio), MPI_BYTE, source, MPI_ANY_TAG, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
    
@@ -69,7 +70,7 @@ void process0(){
    
    MPI_Comm_rank(MPI_COMM_WORLD, &pid);
    
-   Clock clock = {{0,0,0}};
+   Relogio clock = {{0,0,0}};
    
    Evento(pid, &clock);           // a
    Envio(pid, 1, &clock);         // b
